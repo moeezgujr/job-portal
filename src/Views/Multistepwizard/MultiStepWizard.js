@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 import { postUsers } from "../../service/api";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-
+import { LocalStorageService } from "../../../src/service/localstorge";
 const weekdays = [
   { value: "Monday", label: "M" },
   { value: "Tuesday", label: "T" },
@@ -61,11 +61,45 @@ class MultiStepWizard extends Component {
       stepOneStatus: false,
       stepTwoStatus: false,
       stepThreeStatus: false,
+      editableUser:{},
       errors: {},
     };
-  }
+  } // Access the URL parameters
+
   componentDidMount() {
-    console.log(this.props.notifications);
+    if (window.location.pathname == "/edit_wizard") {
+      const editableUser =
+        LocalStorageService.getItem("selected_job_portal_user") || [];
+      this.setState({ editableUser });
+      const {
+        jobTitle,
+        experience,
+        education,
+        skills,
+        description,
+        hourlyRate,
+        startDate,
+        careerLevel,
+        gender,
+        equipment,
+        selectedDays,
+        selectedTime,
+      } = editableUser;
+      this.setState({
+        jobTitle,
+        experience,
+        education,
+        skills,
+        description,
+        hourlyRate,
+        startDate,
+        careerLevel,
+        gender,
+        equipment,
+        selectedDays,
+        selectedTime,
+      });
+    }
   }
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -127,6 +161,8 @@ class MultiStepWizard extends Component {
     });
   };
   handleSubmit = () => {
+    let storedUsers = LocalStorageService.getItem("job_portal_users") || [];
+
     const {
       jobTitle,
       experience,
@@ -155,9 +191,24 @@ class MultiStepWizard extends Component {
       selectedDays,
       selectedTime,
     };
-    postUsers(dto).then((res) => {
-      this.props.pushNotification(
-        { 
+    if (window.location.pathname == "/edit_wizard") {
+      storedUsers = storedUsers.filter(
+        (item) => item.id !== this.state.editableUser.id
+      );
+      LocalStorageService.setItem("job_portal_users", [
+        ...storedUsers,
+        { ...dto, id: this.state.editableUser.id },
+        
+      ]);
+      this.props.history.push("/");
+      toast.success("User edited successfully");
+    } else {
+      postUsers(dto).then((res) => {
+        LocalStorageService.setItem("job_portal_users", [
+          ...storedUsers,
+          res.data,
+        ]);
+        this.props.pushNotification({
           UTC: new Date().getTime(),
           list: [
             {
@@ -166,11 +217,11 @@ class MultiStepWizard extends Component {
               count: 1,
             },
           ],
-        },
-      );
-      this.props.history.push('/')
-      toast.success("User Successfully Submitted");
-    });
+        });
+        this.props.history.push("/");
+        toast.success("User Successfully Submitted");
+      });
+    }
     // Handle form submission logic
   };
   handleDropdown = (event) => {
@@ -207,7 +258,6 @@ class MultiStepWizard extends Component {
       stepThreeStatus,
       errors,
     } = this.state;
-
     return (
       <div className="wizard-container">
         <div className="wizard-header">
@@ -426,4 +476,7 @@ const mapStateToProps = (state) => {
     notifications: state.notifications,
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MultiStepWizard));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(MultiStepWizard));

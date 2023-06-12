@@ -4,6 +4,8 @@ import "../../Components/DataTable.css";
 import { withRouter } from "react-router-dom";
 import Table from "../../Components/Table";
 import { getUsers } from "../../service/api";
+import { LocalStorageService } from "../../service/localstorge";
+import { toast } from "react-toastify";
 
 const data = [
   { id: 1, name: "John Doe", age: 25, email: "john@example.com" },
@@ -11,25 +13,34 @@ const data = [
   // Add more data rows...
 ];
 class DataTable extends Component {
-  state={
-    users:[]
-  }
+  state = {
+    users: [],
+  };
   componentDidMount() {
     getUsers().then((res) => {
       console.log(res.data);
-      this.setState({users:res.data})
+      // this.setState({users:res.data})
     });
+    const storedUsers = LocalStorageService.getItem("job_portal_users") || [];
+    this.setState({ users: storedUsers });
   }
   navigateToWizard = () => {
     const { history } = this.props;
     history.push("/wizard"); // Replace '/wizard' with the actual path of your Multi-Step Wizard component
   };
   handleDelete = (row) => {
+    const filterUsers = this.state.users.filter((item) => item !== row);
+    LocalStorageService.setItem("job_portal_users", filterUsers);
+    this.setState({ users: filterUsers });
+    toast.success("Job has been deleted successfully");
+
     // Handle delete action
     console.log("Delete:", row);
   };
 
   handleEdit = (row) => {
+    LocalStorageService.setItem("selected_job_portal_user", row);
+    this.props.history.push("/edit_wizard");
     // Handle edit action
     console.log("Edit:", row);
   };

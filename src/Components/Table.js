@@ -5,10 +5,10 @@ import './DataTable.css';
 const Table = ({ data, onDelete, onEdit }) => {
   const columns = useMemo(
     () => [
-      { Header: 'ID', accessor: 'id' },
-      { Header: 'Name', accessor: 'name' },
-      { Header: 'Username', accessor: 'username' },
-      { Header: 'Email', accessor: 'email' },
+      { Header: 'Title', accessor: 'jobTitle' },
+      { Header: 'Experience', accessor: 'experience' },
+      { Header: 'Gender', accessor: 'gender' },
+      { Header: 'Hourly Rate', accessor: 'hourlyRate' },
       {
         Header: 'Actions',
         Cell: ({ row }) => (

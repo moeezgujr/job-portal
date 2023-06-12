@@ -4,7 +4,6 @@ import "./ToggleableInput.css";
 const ToggleableInput = ({ text, disabled, name, value, onChange }) => {
   const [showDiv, setShowDiv] = useState(false);
   const [inputValue, setInputValue] = useState("");
-
   const handleToggle = () => {
     setShowDiv(!showDiv);
   };
