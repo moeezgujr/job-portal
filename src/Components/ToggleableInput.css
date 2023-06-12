@@ -1,0 +1,56 @@
+.ToggleableInput {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  /* Rectangle 215 */
+
+  width: 580px;
+  height: 50px;
+
+  border-radius: 10px;
+
+  background: #e2e2e2;
+
+  /* Group 102 */
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-button {
+  margin: 0 !important;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  /* Rectangle 213 */
+
+  width: 166px;
+  height: 50px;
+
+  border-radius: 10px;
+
+  background: #d5d8da;
+}
+.time-input {
+  margin: 0 !important;
+  width: 400px;
+  height: 26px;
+  border-radius: 10px;
+  background: #e2e2e2;
+  border: none;
+  padding-left: 20px;
+  
+}
+.time-input::placeholder {
+  padding-left: 20px;
+}
+
+.toggleable-div {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+.bg-white{
+  background: white;
+}

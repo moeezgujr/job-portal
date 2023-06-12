@@ -1,0 +1,354 @@
+/* MultiStepWizard.css */
+.wizard-header {
+  height: 100px;
+  border-bottom: 2px solid black;
+}
+.wizard-container {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 20px;
+  padding-left: 70px;
+  padding-right: 70px;
+  border: 1px solid #ccc;
+  width: 1226px;
+  height: 1268px;
+  border-radius: 20px;
+  filter: drop-shadow(0px 10px 15px rgba(219, 216, 234, 0.5));
+  background: #ffffff;
+}
+.status-bar {
+  /* position: absolute; */
+  width: 1226;
+  height: 71.5px;
+  background: #eaeaea;
+  display: flex;
+}
+.status-number {
+  /* Step 1 of 3 */
+  margin-top: 5px;
+  width: 98px;
+  height: 23px;
+  font-family: "TT Norms";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 50px;
+  font-style: normal;
+  text-align: left;
+  color: #006bb3;
+}
+.job-heading {
+  /* CREATE A JOB POST */
+
+  width: 367px;
+  height: 42px;
+
+  font-family: "TTNorms-Bold";
+  font-size: 36px;
+  font-weight: normal;
+  line-height: 41px;
+  font-style: normal;
+  text-align: left;
+  color: #006ab3;
+  margin-bottom: 0;
+}
+.job-text {
+  /* Complete the following steps to create an effective job post */
+
+  width: 419px;
+  height: 18px;
+  margin-top: 0;
+  font-family: "TT Norms";
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 35px;
+  font-style: normal;
+  text-align: left;
+  color: #212529;
+}
+.status-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+.status-item-1 {
+  color: #fff;
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  filter: drop-shadow(0px 6px 5px rgba(89, 102, 104, 0.16));
+  background: #006ab3;
+}
+.job-info-text {
+  /* Job Information */
+  /* position: absolute; */
+  height: 23px;
+  margin: auto;
+  font-family: "TT Norms";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 45px;
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;
+  margin: auto;
+}
+.candidate-type {
+  /* Candidate Type */
+
+  /* position: absolute; */
+  /* width: 142px; */
+  height: 23px;
+  opacity: 0.51;
+  margin: auto;
+  font-family: "TT Norms";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 45px;
+  font-style: normal;
+  text-align: center;
+  color: #495057;
+}
+
+.shift-timing-text {
+  /* Shift TImings */
+
+  height: 23px;
+  opacity: 0.51;
+  margin: auto;
+  font-family: "TT Norms";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 45px;
+  font-style: normal;
+  text-align: center;
+  color: #495057;
+}
+
+.status-item.active {
+  background-color: #006bb3 !important;
+  color: #fff !important;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.status-item.visited {
+  background-color: #006bb3 !important;
+  color: #fff !important;
+}
+.status-item.unvisted {
+  background-color: #eee !important;
+  color: black;
+}
+.wizard-form {
+  margin-bottom: 20px;
+}
+
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.wizard-step h2 {
+  margin-bottom: 10px;
+}
+
+.wizard-step input,
+select,
+.wizard-step textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.wizard-step button {
+  padding: 10px 20px;
+  margin-right: 10px;
+}
+.weekdays-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+.weekday {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  color: #999;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.weekday.selected {
+  background-color: #006bb3;
+  color: #fff;
+}
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+.actions-container {
+  display: flex;
+  justify-content: space-between;
+}
+.prev-btn {
+  /* Rectangle 202 */
+  width: 278px;
+  height: 60px;
+  border-color: #707070;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+.next-btn {
+  width: 278px;
+  height: 60px;
+  color: #fff;
+  border-color: #707070;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: #006bb3;
+}
+/* Row class */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.text-area {
+  width: 100%;
+  height: 100px;
+  border-color: #dee2e6;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  background: #ffffff;
+}
+/* .text-color-white{
+  color: #fff !important;
+}
+.active-bg-color{
+  background-color: #006bb3 !important;
+} */
+.border-radius-0 {
+  border-radius: 0% !important;
+}
+/* Column classes */
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-1 {
+  flex: 0 0 8.33333%;
+  max-width: 8.33333%;
+}
+
+.col-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+.form-input {
+  min-width: 550px;
+  height: 40px;
+  /* margin-top: 50px; */
+  border-color: #dee2e6;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  background: #ffffff;
+}
+.step-3-heading {
+  width: 442px;
+  height: 34px;
+  font-family: "TT Norms";
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 41px;
+  font-style: normal;
+  text-align: left;
+  color: #000000;
+}
+.step-3-container {
+  height: 100px;
+  border-bottom: 2px solid black;
+}
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.active-btn {
+  background-color: #006bb3 !important;
+  color: #fff !important;
+}
+/* ... and so on for other column sizes ... */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 350px;
+}
+
+.btn {
+  background: #34dd74;
+    color: white;
+    font-size: 15px;
+    width: 330px;
+    height: 60px;
+    border: none;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50px;
+    width: 349px;
+  opacity: 0;
+}
+.uploading_text{
+  width: 160px;
+  height: 15px;
+  font-family: "TT Norms";
+  font-size: 12px;
+  font-weight: normal;
+  /* line-height: 71px; */
+  font-style: normal;
+  text-align: left;
+  color: #8c8c8c;
+}
+.error-outline{
+  border: 1px solid #ff0202 !important;
+}
